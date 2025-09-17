@@ -1,0 +1,22 @@
+{
+  "server": {
+    "port": "8080",
+    "debug": false,
+    "read_timeout": 30,
+    "write_timeout": 30,
+    "idle_timeout": 120
+  },
+  "storage": {
+    "data_dir": "./data",
+    "memtable_size": 67108864,
+    "compaction_interval": 3600,
+    "wal_sync_interval": 1,
+    "enable_compression": false,
+    "max_open_files": 1000
+  },
+  "logging": {
+    "level": "info",
+    "format": "json",
+    "file": ""
+  }
+}
