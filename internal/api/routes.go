@@ -56,8 +56,10 @@ func (s *Server) setupRoutes() {
 	v1 := s.router.Group("/api/v1")
 	
 	// Health and stats endpoints
+	v1.GET("/:id", s.handlers.Custom)
 	v1.GET("/health", s.handlers.HealthCheck)
 	v1.GET("/stats", s.handlers.GetStats)
+	// v1.GET("/:id", s.handlers.Custom)
 	
 	// Collection routes
 	collections := v1.Group("/collections/:collection")

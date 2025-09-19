@@ -238,6 +238,13 @@ func (h *Handlers) HealthCheck(c *gin.Context) {
 	})
 }
 
+func (h *Handlers) Custom(c *gin.Context){
+	id := c.Param("id")
+	c.JSON(http.StatusOK, gin.H{
+		"your" : id,
+	})
+}
+
 // GetStats returns database statistics
 func (h *Handlers) GetStats(c *gin.Context) {
 	stats := h.engine.Stats()
