@@ -7,6 +7,8 @@ import (
 	"os/signal"
 	"syscall"
 
+	"github.com/joho/godotenv"
+
 	"coffedb/internal/api"
 	"coffedb/internal/config"
 	"coffedb/internal/storage"
@@ -34,9 +36,14 @@ func main() {
 	if *port != "" {
 		cfg.Server.Port = *port
 	}
-
+	// to be got from a .env file
+	errorr := godotenv.Load(".env")
+	if errorr != nil {
+        log.Fatal("Error loading .env file")
+    }
+	version := os.Getenv("VERSION")
 	// Initialize storage engine
-	log.Printf("Starting CoffeDB Server v1.0.0")
+	log.Printf("Starting CoffeDB Server %s", version)
 	log.Printf("Data directory: %s", cfg.Storage.DataDir)
 	log.Printf("Server port: %s", cfg.Server.Port)
 

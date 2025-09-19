@@ -56,6 +56,7 @@ func (h *Handlers) CreateDocument(c *gin.Context) {
 	c.JSON(http.StatusCreated, gin.H{
 		"id": id,
 		"message": "Document created successfully",
+		"created_at": time.Now(),
 	})
 }
 
