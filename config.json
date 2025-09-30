@@ -8,7 +8,7 @@
   },
   "storage": {
     "data_dir": "./data",
-    "memtable_size": 67108864,
+    "memtable_size": 10,
     "compaction_interval": 3600,
     "wal_sync_interval": 1,
     "enable_compression": false,

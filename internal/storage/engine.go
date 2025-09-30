@@ -180,10 +180,11 @@ func (e *Engine) Put(collection, id string, data map[string]interface{}) error {
 	e.updateIndexes(collection, id, doc)
 
 	// Check if memtable needs flushing
-	if e.memtable.Size() >= e.config.MemtableSize {
-		go e.flushMemtable()
-	}
-
+	// if e.memtable.Size() >= e.config.MemtableSize {
+	// 	go e.flushMemtable()
+	// }
+	go e.flushMemtable()
+	fmt.Printf("this will happen hopefully")
 	return nil
 }
 
@@ -438,6 +439,7 @@ func (e *Engine) flushMemtable() {
 
 	// Write old memtable to disk
 	oldMemtable.Range("", func(key string, value interface{}) bool {
+		fmt.Println("Flushing key to B-tree:", key)
 		e.btree.Put(key, value)
 		return true
 	})

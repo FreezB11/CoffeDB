@@ -18,7 +18,8 @@ func main() {
 	var (
 		configPath = flag.String("config", "config.json", "path to configuration file")
 		dataDir    = flag.String("data", "", "data directory (overrides config)")
-		port       = flag.String("port", "", "server port (overrides config)")
+		port       = flag.String("p", "", "server port (overrides config wait)")
+		// help 	   = flag.Int("h",0,"idk what this will do")
 	)
 	flag.Parse()
 
@@ -36,6 +37,9 @@ func main() {
 	if *port != "" {
 		cfg.Server.Port = *port
 	}
+	// if help != ""{
+	// 	log.Printf("testing")
+	// }
 	// to be got from a .env file
 	errorr := godotenv.Load(".env")
 	if errorr != nil {

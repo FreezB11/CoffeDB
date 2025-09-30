@@ -263,3 +263,9 @@ func (h *Handlers) GetStats(c *gin.Context) {
 func generateID() string {
 	return fmt.Sprintf("%d", time.Now().UnixNano())
 }
+
+func (h *Handlers) Admin(c *gin.Context){
+	c.JSON(http.StatusOK, gin.H{
+		"database":"hell",
+	})
+}

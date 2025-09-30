@@ -59,7 +59,7 @@ func (s *Server) setupRoutes() {
 	v1.GET("/:id", s.handlers.Custom)
 	v1.GET("/health", s.handlers.HealthCheck)
 	v1.GET("/stats", s.handlers.GetStats)
-	// v1.GET("/:id", s.handlers.Custom)
+	v1.GET("/admin", s.handlers.Admin)
 	
 	// Collection routes
 	collections := v1.Group("/collections/:collection")
@@ -77,8 +77,11 @@ func (s *Server) setupRoutes() {
 		collections.GET("/query", s.handlers.QueryDocuments)
 		
 		// Index management
-		collections.POST("/indexes", s.handlers.CreateIndex)
+		collections.POST("/indexes", s.handlers.CreateIndex) 
+		// collections.GET("/admin", s.handlers.Admin)
 	}
+
+	// admin := v1.Group("/admin/")
 
 	// Root endpoint
 	s.router.GET("/", func(c *gin.Context) {

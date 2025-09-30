@@ -70,7 +70,8 @@ func Default() *Config {
 		},
 		Storage: StorageConfig{
 			DataDir:            "./data",
-			MemtableSize:       64 * 1024 * 1024, // 64MB
+			// MemtableSize:       64 * 1024 * 1024, // 64MB
+			MemtableSize:       1024,
 			CompactionInterval: 3600,             // 1 hour
 			WALSyncInterval:    1,                // 1 second
 			EnableCompression:  false,
