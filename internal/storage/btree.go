@@ -1,5 +1,27 @@
 package storage
 
+/*
+definitions
+func NewBTree(filename string) (*BTree, error)
+func (bt *BTree) Put(key string, value interface{}) error
+func (bt *BTree) Get(key string) (interface{}, error)
+func (bt *BTree) Delete(key string) error
+func (bt *BTree) Range(prefix string) ([]interface{}, error) 
+func (bt *BTree) insert(node *BTreeNode, key string, value interface{}) error
+func (bt *BTree) insertIntoLeaf(node *BTreeNode, key string, value interface{}) error
+func (bt *BTree) search(node *BTreeNode, key string) (interface{}, error)
+func (bt *BTree) delete(node *BTreeNode, key string) error
+func (bt *BTree) deleteFromInternal(node *BTreeNode, pos int) error
+func (bt *BTree) rangeSearch(node *BTreeNode, prefix string, results *[]interface{}) 
+func (bt *BTree) findChildIndex(node *BTreeNode, key string) int
+func (bt *BTree) splitChild(parent *BTreeNode, childIndex int) error
+func (bt *BTree) loadRoot() error
+func (bt *BTree) Close() error
+func (bt *BTree) flush() error
+*/
+
+
+
 import (
 	"encoding/gob"
 	"fmt"
