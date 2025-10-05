@@ -1,0 +1,51 @@
+name: CoffeDB
+
+on:
+  push:
+    branches: [main]
+    # tags:
+      # - 'v*'
+  pull_request:
+    branches: [main]
+
+  schedule:
+    - cron: "0 0 * * *" #everyday at midnight UTC
+
+  workflow_dispatch: # this adds a "Run Workflow" button
+
+  # workflow_run:
+  #   workflows: ["<other_workflow_name>"]
+  #   types:
+  #     - completed
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+
+    steps:
+      - name: checkout CoffeDB
+        uses: actions/checkout@v4
+      
+      - name: Setting up Go-lang
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22.2'
+
+      - name: Building
+        run: go build ./cmd/server/main.go
+
+
+# to do soon
+      # - name: Running unit tests
+          # run: go test -v ./
+      # - name: Running integration test( starting server then test)
+      #   run: |
+      #     go run cmd/server/main.go &
+      #     SERVER_PID=$!
+      #     sleep 5
+      #     go test -v ./tests/integration
+      #     kill $SERVER_PID || true
+      #   shell: bash
