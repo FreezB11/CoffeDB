@@ -203,7 +203,7 @@ func (p *Processor) minimum(docs []map[string]interface{}, field string) (interf
 	if len(docs) == 0 {
 		return nil, fmt.Errorf("no documents to aggregate")
 	}
-	
+
 	var min interface{}
 	
 	for _, doc := range docs {

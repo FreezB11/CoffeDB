@@ -20,10 +20,8 @@ func (bt *BTree) Close() error
 func (bt *BTree) flush() error
 */
 
-
-
 import (
-	"encoding/gob"
+	"encoding/gob" // for compression tbh
 	"fmt"
 	"os"
 	"sort"
@@ -118,7 +116,7 @@ func (bt *BTree) Delete(key string) error {
 func (bt *BTree) Range(prefix string) ([]interface{}, error) {
 	bt.mu.RLock()
 	defer bt.mu.RUnlock()
-
+a
 	var results []interface{}
 	bt.rangeSearch(bt.root, prefix, &results)
 	return results, nil
